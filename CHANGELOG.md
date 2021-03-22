@@ -1,3 +1,16 @@
+## 0.8.2
+
+  * Nullable ViewModels for callback functions as well as build
+
+## 0.8.1
+
+  * Support nullable ViewModels
+
+## 0.8.0
+
+  * Breaking Change: added null-safety
+  * Breaking Change: updated to redux 5.0.0
+
 ## 0.7.0
 
   * Improved error messages in converters

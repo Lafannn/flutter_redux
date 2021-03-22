@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:github_search/github_client.dart';
 import 'package:transparent_image/transparent_image.dart';
+
+import 'search_result.dart';
 
 class SearchPopulatedView extends StatelessWidget {
   final SearchResult result;
@@ -10,7 +11,7 @@ class SearchPopulatedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: result?.items?.length ?? 0,
+      itemCount: result.items.length,
       itemBuilder: (context, index) {
         final item = result.items[index];
         return _SearchItem(item: item);
@@ -24,7 +25,7 @@ class SearchPopulatedView extends StatelessWidget {
       MaterialPageRoute<Null>(
         builder: (BuildContext context) {
           return Scaffold(
-            resizeToAvoidBottomPadding: false,
+            resizeToAvoidBottomInset: false,
             body: GestureDetector(
               key: Key(item.avatarUrl),
               onTap: () => Navigator.pop(context),
@@ -50,8 +51,8 @@ class SearchPopulatedView extends StatelessWidget {
 
 class _SearchItem extends StatelessWidget {
   const _SearchItem({
-    Key key,
-    @required this.item,
+    Key? key,
+    required this.item,
   }) : super(key: key);
 
   final SearchResultItem item;
@@ -65,7 +66,7 @@ class _SearchItem extends StatelessWidget {
           MaterialPageRoute<Null>(
             builder: (BuildContext context) {
               return Scaffold(
-                resizeToAvoidBottomPadding: false,
+                resizeToAvoidBottomInset: false,
                 body: GestureDetector(
                   key: Key(item.avatarUrl),
                   onTap: () => Navigator.pop(context),
@@ -114,11 +115,11 @@ class _SearchItem extends StatelessWidget {
                       bottom: 4.0,
                     ),
                     child: Text(
-                      "${item.fullName}",
+                      '${item.fullName}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontFamily: "Montserrat",
+                        fontFamily: 'Montserrat',
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -126,9 +127,9 @@ class _SearchItem extends StatelessWidget {
                   ),
                   Container(
                     child: Text(
-                      "${item.url}",
+                      '${item.url}',
                       style: TextStyle(
-                        fontFamily: "Hind",
+                        fontFamily: 'Hind',
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
